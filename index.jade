@@ -1,0 +1,83 @@
+extends layout
+
+block slides
+  section.slide#title
+    h1 Deck.js Starter
+      .subtitle An opinionated starting point for deck.js presentation goodness
+
+  section.slide#introduction
+    :markdown
+      ## Deck.js Starter
+
+      This is my custom set of tweaks / additions to deck for faster and
+      easier authorship, including:
+
+      * **[CodeMirror][cm]**: Live JavaScript code sample execution.
+      * **[CoffeeScript][cs]**: Support for CoffeeScript code execution.
+      * **[Jade Templates][jade]**: Can optionally build using Jade
+        (with Markdown) support.
+
+      [deckjs]: https://github.com/imakewebthings/deck.js
+      [jade]: http://jade-lang.com
+      [cm]: https://github.com/iros/deck.js-codemirror
+      [cs]: http://coffeescript.org/
+
+  section.slide#js
+    :markdown
+      ## JavaScript Example
+
+      You can edit and run the following code sample from your browser:
+
+    textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      var toCamel = function (str) {
+        return str.replace(/(\_[a-z])/g, function (val) {
+          return val.toUpperCase().replace('_', '');
+        });
+      };
+
+      console.log(toCamel("my_cased_variable"));
+    //-
+
+  section.slide#cs
+    :markdown
+      ## CoffeeScript Example
+
+      You can even run CoffeeScript code samples!
+
+    textarea.code#code(name="code", mode="coffeescript", runnable="true", style="display: none;").
+      toCamel = (str) ->
+        str.replace /(\_[a-z])/g, (val) ->
+          val.toUpperCase().replace '_', ''
+
+      console.log toCamel "my_cased_variable"
+    //-
+
+  section.slide#jade
+    :markdown
+      ## Jade Templates
+
+      Starter slides can use Jade templates and filters.
+
+    pre.
+      section.slide#my-slide
+        :markdown
+          ## Markdown Header
+
+          You can write markdown paragraphs
+          using the `:markdown` filter.
+
+        p Or, any valid Jade too...
+
+
+  section.slide#next
+    :markdown
+      ## Get Started!
+
+      * Check out the [demo](http://ryan-roemer.github.com/deck.js-starter)
+      * [Fork](https://github.com/ryan-roemer/deck.js-starter) or
+        [download](https://ryan-roemer.github.com/deck.js-starter/archive/master.tar.gz)
+        the source from GitHub
+      * Edit "index.jade" and add your slides.
+      * Customize "layout.jade" with additional CSS, scripts, themes or Deck.js
+        plugins.
+      * ... and publish!
