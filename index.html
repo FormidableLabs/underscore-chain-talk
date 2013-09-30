@@ -111,6 +111,34 @@
           console.log("results: ", ret);
         </textarea>
       </section>
+      <section id="practical" class="slide"><h2>A Practical Example</h2>
+        <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          var obj = {"Foo-Item": "a", "Foo-Customer": "b", "Bar-Item": "c"},
+            keys = ["Customer", "CustomerCart", "Item"];
+            
+          var _iter = function () {
+            var count = 0;
+            for (var idx = 0; idx < keys.length; idx++) {
+              for (var key in obj) {
+                if (obj.hasOwnProperty(key) && key === "Foo-" + keys[idx]) {
+                  count++;
+                }
+              }
+            }
+            return count;
+          }
+          
+          var _chain = function () {
+            return _.chain(keys)
+              .filter(function (k) { return _.has(obj, "Foo-" + k); })
+              .reduce(function (m) { return m + 1; }, 0)
+              .value();
+          }
+          
+          console.log("_iter:  " + _iter());
+          console.log("_chain: " + _chain());
+        </textarea>
+      </section>
       <section id="reduce" class="slide"><h2>And Everything Else!</h2>
 
 <p>Chain nearly any other methods from <a href="http://underscorejs.org/">Underscore</a>.</p>
