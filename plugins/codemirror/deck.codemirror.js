@@ -190,6 +190,11 @@
                   "parent.sandbox={eval:function(s){s = parent.CoffeeScript.compile(s); return eval(s);}}<\/script>";
               }
 
+              // Add in underscore
+              if (window._) {
+                iframe[0].contentWindow._ = window._;
+              }
+
               var exposeGlobals;
               if (exposeGlobals = $(codeblock).attr("globals")) {
                 exposeGlobals = exposeGlobals.split(",");

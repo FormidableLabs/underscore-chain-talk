@@ -2,82 +2,51 @@ extends layout
 
 block slides
   section.slide#title
-    h1 Deck.js Starter
-      .subtitle An opinionated starting point for deck.js presentation goodness
+    h1 Underscore Chain
+      .subtitle A Formidable Labs tech talk
 
   section.slide#introduction
     :markdown
-      ## Deck.js Starter
+      ## Underscore Chain
 
-      This is my custom set of tweaks / additions to deck for faster and
-      easier authorship, including:
+      [Underscore](http://underscorejs.org/) is a library we use everyday.
 
-      * **[CodeMirror][cm]**: Live JavaScript code sample execution.
-      * **[CoffeeScript][cs]**: Support for CoffeeScript code execution.
-      * **[Jade Templates][jade]**: Can optionally build using Jade
-        (with Markdown) support.
+      Today, we'll look at the enormously useful
+      [`chain`](http://underscorejs.org/#chain) method.
 
-      [deckjs]: https://github.com/imakewebthings/deck.js
-      [jade]: http://jade-lang.com
-      [cm]: https://github.com/iros/deck.js-codemirror
-      [cs]: http://coffeescript.org/
-
-  section.slide#js
+  section.slide#familiar
     :markdown
-      ## JavaScript Example
+      ## Familiar Underscore Methods
 
-      You can edit and run the following code sample from your browser:
+      We can take all the methods we normally use:
+
+      * `filter`
+      * `object`
+      * `keys`
+      * `map`
+      * `first`
+
+      ... and chain them!
+
+  section.slide#basic
+    :markdown
+      ## Basic Chains
 
     textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
-      var toCamel = function (str) {
-        return str.replace(/(\_[a-z])/g, function (val) {
-          return val.toUpperCase().replace('_', '');
-        });
-      };
+      var arr    = [1, 2, 3],
+        double = function (x) { return 2 * x; },
 
-      console.log(toCamel("my_cased_variable"));
+        // Single. map.
+        map1 = _.map(arr, double),
+
+        // Converted to a chain.
+        map2 = _.chain(arr).map(double).value();
+
+      console.log("maps: ", map1, map2);
     //-
-
-  section.slide#cs
-    :markdown
-      ## CoffeeScript Example
-
-      You can even run CoffeeScript code samples!
-
-    textarea.code#code(name="code", mode="coffeescript", runnable="true", style="display: none;").
-      toCamel = (str) ->
-        str.replace /(\_[a-z])/g, (val) ->
-          val.toUpperCase().replace '_', ''
-
-      console.log toCamel "my_cased_variable"
-    //-
-
-  section.slide#jade
-    :markdown
-      ## Jade Templates
-
-      Starter slides can use Jade templates and filters.
-
-    pre.
-      section.slide#my-slide
-        :markdown
-          ## Markdown Header
-
-          You can write markdown paragraphs
-          using the `:markdown` filter.
-
-        p Or, any valid Jade too...
-
 
   section.slide#next
     :markdown
-      ## Get Started!
+      ## Thanks!
 
-      * Check out the [demo](http://ryan-roemer.github.com/deck.js-starter)
-      * [Fork](https://github.com/ryan-roemer/deck.js-starter) or
-        [download](https://ryan-roemer.github.com/deck.js-starter/archive/master.tar.gz)
-        the source from GitHub
-      * Edit "index.jade" and add your slides.
-      * Customize "layout.jade" with additional CSS, scripts, themes or Deck.js
-        plugins.
-      * ... and publish!
+      [http://underscorejs.org/#chain](http://underscorejs.org/#chain)
