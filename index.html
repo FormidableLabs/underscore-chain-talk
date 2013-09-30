@@ -61,7 +61,7 @@
       </section>
       <section id="basic" class="slide"><h2>Basic Chains</h2>
         <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
-          var arr    = [1, 2, 3],
+          var arr = [1, 2, 3],
             double = function (x) { return 2 * x; },
             
             // Single. map.
@@ -71,6 +71,28 @@
             map2 = _.chain(arr).map(double).value();
             
           console.log("maps: ", map1, map2);
+        </textarea>
+      </section>
+      <section id="complex" class="slide"><h2>A Little More Complex</h2>
+        <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          var ret = _.chain(["bug", "foo", "bar", "baz"])
+            .filter(function (val) { return /^b/.test(val); })
+            .sortBy(function (val) { return val; })
+            .map(function (val) { return val.toUpperCase(); })
+            .value()
+            
+          console.log("results: ", ret);
+        </textarea>
+      </section>
+      <section id="objects" class="slide"><h2>Objects</h2>
+        <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          var ret = _.chain({ foo: "a", bar: "b", baz: "c" })
+            .map(function (v, k) { return [k, v]; })
+            .filter(function (p) { return p[1] !== "c"; })
+            .object()
+            .value()
+            
+          console.log("results: ", ret);
         </textarea>
       </section>
       <section id="next" class="slide"><h2>Thanks!</h2>

@@ -33,7 +33,7 @@ block slides
       ## Basic Chains
 
     textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
-      var arr    = [1, 2, 3],
+      var arr = [1, 2, 3],
         double = function (x) { return 2 * x; },
 
         // Single. map.
@@ -43,6 +43,34 @@ block slides
         map2 = _.chain(arr).map(double).value();
 
       console.log("maps: ", map1, map2);
+    //-
+
+  section.slide#complex
+    :markdown
+      ## A Little More Complex
+
+    textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      var ret = _.chain(["bug", "foo", "bar", "baz"])
+        .filter(function (val) { return /^b/.test(val); })
+        .sortBy(function (val) { return val; })
+        .map(function (val) { return val.toUpperCase(); })
+        .value()
+
+      console.log("results: ", ret);
+    //-
+
+  section.slide#objects
+    :markdown
+      ## Objects
+
+    textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      var ret = _.chain({ foo: "a", bar: "b", baz: "c" })
+        .map(function (v, k) { return [k, v]; })
+        .filter(function (p) { return p[1] !== "c"; })
+        .object()
+        .value()
+
+      console.log("results: ", ret);
     //-
 
   section.slide#next
