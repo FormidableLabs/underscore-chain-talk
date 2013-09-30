@@ -3,7 +3,9 @@ extends layout
 block slides
   section.slide#title
     h1 Underscore Chain
-      .subtitle A Formidable Labs tech talk
+      .subtitle A Formidable Labs tech talk by
+        |&nbsp;
+        a(href="http://loose-bits.com") Ryan Roemer
 
   section.slide#introduction
     :markdown
@@ -50,6 +52,7 @@ block slides
       ## A Little More Complex
 
     textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      // Keep values starting with "b", sort and upper case.
       var ret = _.chain(["bug", "foo", "bar", "baz"])
         .filter(function (val) { return /^b/.test(val); })
         .sortBy(function (val) { return val; })
@@ -64,6 +67,7 @@ block slides
       ## Objects
 
     textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      // Remove property with value "c".
       var ret = _.chain({ foo: "a", bar: "b", baz: "c" })
         .map(function (v, k) { return [k, v]; })
         .filter(function (p) { return p[1] !== "c"; })
@@ -73,8 +77,41 @@ block slides
       console.log("results: ", ret);
     //-
 
-  section.slide#next
+  section.slide#reduce
+    :markdown
+      ## Reductions
+
+    textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      // Sum lengths of string values.
+      var ret = _.chain({ foo: "foo", bar: "b", baz: "car" })
+        .map(function (v) { return v.length; })
+        .reduce(function (m, v) { return m + v; })
+        .value()
+
+      console.log("results: ", ret);
+    //-
+
+  section.slide#reduce
+    :markdown
+      ## And Everything Else!
+
+      Chain nearly any other methods from [Underscore](http://underscorejs.org/).
+
+    textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      var obj = [];
+      var ret = _.chain(obj)
+        .value()
+
+      console.log("results: ", ret);
+    //-
+
+  section.slide#thanks
     :markdown
       ## Thanks!
 
+      Read more about `chain` at:
       [http://underscorejs.org/#chain](http://underscorejs.org/#chain)
+
+      [http://formidablelabs.github.io/underscore-chain-talk](formidablelabs.github.io/underscore-chain-talk)
+
+      [https://github.com/FormidableLabs/underscore-chain-talk](github.com/FormidableLabs/underscore-chain-talk)

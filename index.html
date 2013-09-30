@@ -41,7 +41,10 @@
     <div class="deck-container">
       <section id="title" class="slide">
         <h1>Underscore Chain
-          <div class="subtitle">A Formidable Labs tech talk</div>
+          <div class="subtitle">
+            A Formidable Labs tech talk by
+            &nbsp;<a href="http://loose-bits.com">Ryan Roemer</a>
+          </div>
         </h1>
       </section>
       <section id="introduction" class="slide"><h2>Underscore Chain</h2>
@@ -75,6 +78,7 @@
       </section>
       <section id="complex" class="slide"><h2>A Little More Complex</h2>
         <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          // Keep values starting with "b", sort and upper case.
           var ret = _.chain(["bug", "foo", "bar", "baz"])
             .filter(function (val) { return /^b/.test(val); })
             .sortBy(function (val) { return val; })
@@ -86,6 +90,7 @@
       </section>
       <section id="objects" class="slide"><h2>Objects</h2>
         <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          // Remove property with value "c".
           var ret = _.chain({ foo: "a", bar: "b", baz: "c" })
             .map(function (v, k) { return [k, v]; })
             .filter(function (p) { return p[1] !== "c"; })
@@ -95,9 +100,36 @@
           console.log("results: ", ret);
         </textarea>
       </section>
-      <section id="next" class="slide"><h2>Thanks!</h2>
+      <section id="reduce" class="slide"><h2>Reductions</h2>
+        <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          // Sum lengths of string values.
+          var ret = _.chain({ foo: "foo", bar: "b", baz: "car" })
+            .map(function (v) { return v.length; })
+            .reduce(function (m, v) { return m + v; })
+            .value()
+            
+          console.log("results: ", ret);
+        </textarea>
+      </section>
+      <section id="reduce" class="slide"><h2>And Everything Else!</h2>
 
-<p><a href="http://underscorejs.org/#chain">http://underscorejs.org/#chain</a></p>
+<p>Chain nearly any other methods from <a href="http://underscorejs.org/">Underscore</a>.</p>
+        <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          var obj = [];
+          var ret = _.chain(obj)
+            .value()
+            
+          console.log("results: ", ret);
+        </textarea>
+      </section>
+      <section id="thanks" class="slide"><h2>Thanks!</h2>
+
+<p>Read more about <code>chain</code> at:
+<a href="http://underscorejs.org/#chain">http://underscorejs.org/#chain</a></p>
+
+<p><a href="formidablelabs.github.io/underscore-chain-talk">http://formidablelabs.github.io/underscore-chain-talk</a></p>
+
+<p><a href="github.com/FormidableLabs/underscore-chain-talk">https://github.com/FormidableLabs/underscore-chain-talk</a></p>
       </section>
       <!-- deck.navigation snippet--><a href="#" title="Previous" class="deck-prev-link">&#8592;</a><a href="#" title="Next" class="deck-next-link">&#8594;</a>
       <!-- deck.status snippet-->
