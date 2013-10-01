@@ -99,9 +99,9 @@ block slides
       // Traverse and object by string path
       var obj = { foo: { bar: { baz: "hi" }} };
       var traverse = function (path) {
-        return _.chain(path.split("."))
-          .reduce(function (o, k) { return k ? o[k] : o; }, obj)
-          .value()
+        return _.reduce(path.split("."), function (o, k) {
+          return k ? o[k] : o;
+        }, obj);
       };
 
       console.log("\"\": ", traverse(""));
