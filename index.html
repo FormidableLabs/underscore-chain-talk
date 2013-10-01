@@ -127,6 +127,23 @@
           console.log("foo.bar.baz: ", traverse("foo.bar.baz"));
         </textarea>
       </section>
+      <section id="creation" class="slide"><h2>Object Creation</h2>
+        <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          // Create object with nested value.
+          var create = function (path, val) {
+            var obj = {}
+            _.reduce(path.split("."), function (cur, key, idx, list) {
+              // Set each part to new {} except for last.
+              return (cur[key] = idx + 1 === list.length ? val : {});
+            }, obj);
+            return obj;
+          };
+          
+          console.log("foo: ", create("foo", "hi"));
+          console.log("foo.bar: ", create("foo.bar", "hi"));
+          console.log("foo.bar.baz: ", create("foo.bar.baz", "hi"));
+        </textarea>
+      </section>
       <section id="practical" class="slide"><h2>A Practical Example</h2>
         <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
           var obj = {"Foo-Item": "a", "Foo-Customer": "b", "Bar-Item": "c"},
@@ -155,7 +172,7 @@
           console.log("_chain: " + _chain());
         </textarea>
       </section>
-      <section id="reduce" class="slide"><h2>And Everything Else!</h2>
+      <section id="everything" class="slide"><h2>And Everything Else!</h2>
 
 <p>Chain nearly any other methods from <a href="http://underscorejs.org/">Underscore</a>.</p>
         <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">

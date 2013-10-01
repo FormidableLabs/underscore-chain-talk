@@ -110,6 +110,26 @@ block slides
       console.log("foo.bar.baz: ", traverse("foo.bar.baz"));
     //-
 
+  section.slide#creation
+    :markdown
+      ## Object Creation
+
+    textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      // Create object with nested value.
+      var create = function (path, val) {
+        var obj = {}
+        _.reduce(path.split("."), function (cur, key, idx, list) {
+          // Set each part to new {} except for last.
+          return (cur[key] = idx + 1 === list.length ? val : {});
+        }, obj);
+        return obj;
+      };
+
+      console.log("foo: ", create("foo", "hi"));
+      console.log("foo.bar: ", create("foo.bar", "hi"));
+      console.log("foo.bar.baz: ", create("foo.bar.baz", "hi"));
+    //-
+
   section.slide#practical
     :markdown
       ## A Practical Example
@@ -141,7 +161,7 @@ block slides
       console.log("_chain: " + _chain());
     //-
 
-  section.slide#reduce
+  section.slide#everything
     :markdown
       ## And Everything Else!
 
