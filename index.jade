@@ -91,6 +91,25 @@ block slides
       console.log("results: ", ret);
     //-
 
+  section.slide#traversal
+    :markdown
+      ## Object Traversal
+
+    textarea.code#code(name="code", mode="javascript", runnable="true", style="display: none;").
+      // Traverse and object by string path
+      var obj = { foo: { bar: { baz: "hi" }} };
+      var traverse = function (path) {
+        return _.chain(path.split("."))
+          .reduce(function (o, k) { return k ? o[k] : o; }, obj)
+          .value()
+      };
+
+      console.log("\"\": ", traverse(""));
+      console.log("foo: ", traverse("foo"));
+      console.log("foo.bar: ", traverse("foo.bar"));
+      console.log("foo.bar.baz: ", traverse("foo.bar.baz"));
+    //-
+
   section.slide#practical
     :markdown
       ## A Practical Example

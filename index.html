@@ -111,6 +111,22 @@
           console.log("results: ", ret);
         </textarea>
       </section>
+      <section id="traversal" class="slide"><h2>Object Traversal</h2>
+        <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
+          // Traverse and object by string path
+          var obj = { foo: { bar: { baz: "hi" }} };
+          var traverse = function (path) {
+            return _.chain(path.split("."))
+              .reduce(function (o, k) { return k ? o[k] : o; }, obj)
+              .value()
+          };
+          
+          console.log("\"\": ", traverse(""));
+          console.log("foo: ", traverse("foo"));
+          console.log("foo.bar: ", traverse("foo.bar"));
+          console.log("foo.bar.baz: ", traverse("foo.bar.baz"));
+        </textarea>
+      </section>
       <section id="practical" class="slide"><h2>A Practical Example</h2>
         <textarea id="code" name="code" mode="javascript" runnable="true" style="display: none;" class="code">
           var obj = {"Foo-Item": "a", "Foo-Customer": "b", "Bar-Item": "c"},
